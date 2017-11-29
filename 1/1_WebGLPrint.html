@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--旋转、平移、放缩-->
+<!--颜色-->
+<!--键盘、鼠标、菜单、按钮、滑动条-->
+<!--正方形边框 下拉选单改变颜色-->
 <head>
     <meta charset="utf-8" />
-    <title>Draw a point with a mouse click</title>
+    <title>Use keyboard and mouse to change the shape</title>
+    <style type="text/css">
+        .container{
+            margin:0 auto;
+            width:800px;
+        }
+        .control{
+            margin:0 auto;
+            width:800px;
+        }
+        #scene{
+            border:1px solid white;
+        }
+    </style>
 </head>
 
 <body onload="main()">
-<canvas id="webgl" width="500" height="500">
-    Please use a browser that supports "canvas"
-</canvas>
+<h1 style="text-align:center">Use keyboard and mouse to change the shape</h1>
+<div class="container">
+    <canvas id="webgl" width="800" height="400">
+        Please use a browser that supports "canvas"
+    </canvas>
+</div>
+
+<div class = "control">
+    <p>
+        放缩：
+        <input id = "size" type = "range"
+                 min = "0" max = "100" step = "10" value = "50"/>
+        旋转：
+        <input id = "rotation" type = "range"
+               min = "0" max = "360" step = "10" value = "0"/>
+    </p>
+    <p>
+        移动：
+        x:
+        <button id="left"> < </button>
+        <input id = "move_x" type = "range"
+               min = "0" max = "100" step = "10" value = "50"/>
+        <button id="right"> > </button>
+        y:
+        <button id="down">v</button>
+        <input id = "move_y" type = "range"
+               min = "0" max = "100" step = "10" value = "50"/>
+        <button id="up">^</button>
+    </p>
+    <p>
+        颜色：
+        <select id="color">
+            <!--TODO colorful text-->
+            <option value="0">red</option>
+            <option value="1">orange</option>
+            <option value="2">yellow</option>
+            <option value="3">green</option>
+            <option value="4">blue</option>
+            <option value="5">indigo</option>
+            <option value="6">violet</option>
+        </select>
+    </p>
+</div>
 
 <script src="../lib/webgl-utils.js"></script>
 <script src="../lib/webgl-debug.js"></script>

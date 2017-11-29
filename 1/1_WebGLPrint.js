@@ -1,5 +1,8 @@
-// ClickedPints.js (c) 2012 matsuda
-// Vertex shader program
+// 1_WebGLPrint.js (c) 2017 EgbertW
+//
+// TODO 实现对象的旋转、平移、放缩
+// TODO 更改颜色属性
+// TODO 交互手段包括：键盘、鼠标、菜单、按钮、滑动条
 var VSHADER_SOURCE =
     'attribute vec4 a_Position;\n' +
     'void main() {\n' +
