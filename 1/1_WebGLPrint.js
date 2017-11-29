@@ -16,6 +16,7 @@ var FSHADER_SOURCE =
     '  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n' +
     '}\n';
 
+
 function main() {
     // Retrieve <canvas> element
     var canvas = document.getElementById('webgl');
@@ -33,6 +34,16 @@ function main() {
         return;
     }
 
+    //Init end
+
+
+    var vertices = [
+        -0.5,0.5,0.0,
+        -0.5,-0.5,0.0,
+        0.5,-0.5,0.0,
+        0.5,0.5,0.0
+    ];
+
     // // Get the storage location of a_Position
     var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
     if (a_Position < 0) {
@@ -41,7 +52,9 @@ function main() {
     }
 
     // Register function (event handler) to be called on a mouse press
-    canvas.onmousedown = function(ev){ click(ev, gl, canvas, a_Position); };
+    canvas.onmousedown = function (ev) {
+        click(ev, gl, canvas, a_Position);
+    };
 
     // Specify the color for clearing <canvas>
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -54,20 +67,21 @@ var g_points = []; // The array for the position of a mouse press
 function click(ev, gl, canvas, a_Position) {
     var x = ev.clientX; // x coordinate of a mouse pointer
     var y = ev.clientY; // y coordinate of a mouse pointer
-    var rect = ev.target.getBoundingClientRect() ;
+    var rect = ev.target.getBoundingClientRect();
 
-    x = ((x - rect.left) - canvas.width/2)/(canvas.width/2);
-    y = (canvas.height/2 - (y - rect.top))/(canvas.height/2);
+    x = ((x - rect.left) - canvas.width / 2) / (canvas.width / 2);
+    y = (canvas.height / 2 - (y - rect.top)) / (canvas.height / 2);
     // Store the coordinates to g_points array
-    g_points.push(x); g_points.push(y);
+    g_points.push(x);
+    g_points.push(y);
 
     // Clear <canvas>
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     var len = g_points.length;
-    for(var i = 0; i < len; i += 2) {
+    for (var i = 0; i < len; i += 2) {
         // Pass the position of a point to a_Position variable
-        gl.vertexAttrib3f(a_Position, g_points[i], g_points[i+1], 0.0);
+        gl.vertexAttrib3f(a_Position, g_points[i], g_points[i + 1], 0.0);
 
         // Draw
         gl.drawArrays(gl.POINTS, 0, 1);
