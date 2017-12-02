@@ -10,12 +10,12 @@
     <style type="text/css">
         .container {
             margin: 0 auto;
-            width: 800px;
+            width: 600px;
         }
 
         .control {
             margin: 0 auto;
-            width: 800px;
+            width: 600px;
         }
 
         #scene {
@@ -27,7 +27,7 @@
 <body onload="main()">
 <h1 style="text-align:center">Use keyboard and mouse to change the shape</h1>
 <div class="container">
-    <canvas id="webgl" width="800" height="400">
+    <canvas id="canvas" width="600" height="600">
         Please use a browser that supports "canvas"
     </canvas>
 </div>
@@ -36,23 +36,23 @@
     <p>
         放缩：
         <input id="size" type="range"
-               min="0" max="100" step="10" value="50"/>
+               min="0" max="2" step="0.05" value="1"/>
         旋转：
         <input id="rotation" type="range"
-               min="0" max="360" step="10" value="180"/>
+               min="-180" max="180" step="10" value="0"/>
     </p>
     <p>
         移动：
         x:
-        <button id="left"> <</button>
+        <button id="left">←</button>
         <input id="move_x" type="range"
-               min="0" max="100" step="10" value="50"/>
-        <button id="right"> ></button>
+               min="-0.5" max="0.5" step="0.05" value="0"/>
+        <button id="right">→</button>
         y:
-        <button id="down">v</button>
+        <button id="down">↓</button>
         <input id="move_y" type="range"
-               min="0" max="100" step="10" value="50"/>
-        <button id="up">^</button>
+               min="-0.5" max="0.5" step="0.05" value="0"/>
+        <button id="up">↑</button>
     </p>
     <p>
         颜色：
@@ -72,7 +72,7 @@
 <script src="../lib/webgl-utils.js"></script>
 <script src="../lib/webgl-debug.js"></script>
 <script src="../lib/cuon-utils.js"></script>
-<script src="1_WebGLPrint.js"></script>
 <script src="../lib/cuon-matrix.js"></script>
+<script src="1_WebGLPrint.js"></script>
 </body>
 </html>
